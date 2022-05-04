@@ -1,6 +1,13 @@
-type ExampleEntity @entity {
+type EscrowFactory @entity {
   id: ID!
   count: BigInt!
   eip20: Bytes! # address
   escrow: Bytes! # address
+}
+
+type Escrow @entity {
+  id: ID!
+  count: BigInt!
+  _url: String! # string
+  _hash: String! # string
 }

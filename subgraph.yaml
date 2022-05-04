@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -10,8 +10,9 @@ dataSources:
       abi: EscrowFactory
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
+      file: ./src/mapping/escrowfactory.ts
       entities:
         - Launched
       abis:
@@ -20,4 +21,24 @@ dataSources:
       eventHandlers:
         - event: Launched(address,address)
           handler: handleLaunched
-      file: ./src/mapping.ts
+templates:
+  - name: Escrow
+    kind: ethereum/contract
+    network: matic
+    source:
+      abi: Escrow
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/mapping/escrow.ts
+      entities:
+        - Escrow
+      abis:
+        - name: Escrow
+          file: ./abis/Escrow.json
+      eventHandlers:
+        - event: IntermediateStorage(string,string)
+          handler: handleIntermediateStorage
+        - event: Pending(string,string)
+          handler: handlePending

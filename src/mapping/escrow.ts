@@ -1,19 +1,20 @@
 import { BigInt } from "@graphprotocol/graph-ts"
 import {
-  EscrowFactory,
-  Launched
-} from "../generated/EscrowFactory/EscrowFactory"
-import { ExampleEntity } from "../generated/schema"
+  Escrow,
+  IntermediateStorage,
+  Pending
+} from "../generated/templates/Escrow/Escrow"
+import { Escrow } from "../generated/schema"
 
-export function handleLaunched(event: Launched): void {
+export function handleIntermediateStorage(event: IntermediateStorage): void {
   // Entities can be loaded from the store using a string ID; this ID
   // needs to be unique across all entities of the same type
-  let entity = ExampleEntity.load(event.transaction.from.toHex())
+  let entity = Escrow.load(event.transaction.from.toHex())
 
   // Entities only exist after they have been saved to the store;
   // `null` checks allow to create entities on demand
   if (!entity) {
-    entity = new ExampleEntity(event.transaction.from.toHex())
+    entity = new Escrow(event.transaction.from.toHex())
 
     // Entity fields can be set using simple assignments
     entity.count = BigInt.fromI32(0)
@@ -23,8 +24,8 @@ export function handleLaunched(event: Launched): void {
   entity.count = entity.count + BigInt.fromI32(1)
 
   // Entity fields can be set based on event parameters
-  entity.eip20 = event.params.eip20
-  entity.escrow = event.params.escrow
+  entity._url = event.params._url
+  entity._hash = event.params._hash
 
   // Entities can be written to the store with `.save()`
   entity.save()
@@ -44,11 +45,25 @@ export function handleLaunched(event: Launched): void {
   // The following functions can then be called on this contract to access
   // state variables and other data:
   //
-  // - contract.counter(...)
-  // - contract.createEscrow(...)
+  // - contract.areTrustedHandlers(...)
+  // - contract.bulkPaid(...)
+  // - contract.bulkPayOut(...)
+  // - contract.cancel(...)
+  // - contract.canceler(...)
+  // - contract.duration(...)
   // - contract.eip20(...)
-  // - contract.escrowCounters(...)
-  // - contract.hasEscrow(...)
-  // - contract.isChild(...)
-  // - contract.lastEscrow(...)
+  // - contract.finalAmounts(...)
+  // - contract.finalResultsHash(...)
+  // - contract.finalResultsUrl(...)
+  // - contract.getBalance(...)
+  // - contract.launcher(...)
+  // - contract.manifestHash(...)
+  // - contract.manifestUrl(...)
+  // - contract.recordingOracle(...)
+  // - contract.recordingOracleStake(...)
+  // - contract.reputationOracle(...)
+  // - contract.reputationOracleStake(...)
+  // - contract.status(...)
 }
+
+export function handlePending(event: Pending): void {}
