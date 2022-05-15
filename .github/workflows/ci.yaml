@@ -12,6 +12,5 @@ jobs:
         with:
           node-version: 18
       - run: npm install
-      - run: npm install -g @graphprotocol/graph-cli
-      - run: graph codegen
-      - run: graph build
+      - run: npm run codegen
+      - run: npm run build

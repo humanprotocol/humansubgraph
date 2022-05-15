@@ -5,7 +5,14 @@ type EscrowFactory @entity {
   escrow: Bytes! # address
 }
 
-type Escrow @entity {
+type ISEvent @entity {
+  id: ID!
+  count: BigInt!
+  _url: String! # string
+  _hash: String! # string
+}
+
+type PEvent @entity {
   id: ID!
   count: BigInt!
   _url: String! # string

@@ -1,4 +1,4 @@
-specVersion: 0.0.2
+specVersion: 0.0.5
 description: Human Polygon, with transactions 1
 schema:
   file: ./schema.graphql
@@ -12,7 +12,7 @@ dataSources:
       abi: EscrowFactory
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.6
+      apiVersion: 0.0.7
       language: wasm/assemblyscript
       file: ./src/mapping/escrowfactory.ts
       entities:
@@ -31,11 +31,12 @@ templates:
       abi: Escrow
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.6
+      apiVersion: 0.0.7
       language: wasm/assemblyscript
       file: ./src/mapping/escrow.ts
       entities:
-        - Escrow
+        - ISEvent
+        - PEvent
       abis:
         - name: Escrow
           file: ./abis/Escrow.json
