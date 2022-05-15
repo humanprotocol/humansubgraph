@@ -11,3 +11,13 @@ type Escrow @entity {
   _url: String! # string
   _hash: String! # string
 }
+
+type Transaction @entity(immutable: true) {
+  id: Bytes!
+  transactionReceipt: TransactionReceipt
+}
+
+type TransactionReceipt @entity(immutable: true) {
+  id: Bytes!
+  transaction: Transaction
+}

@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: Human Polygon
+description: Human Polygon, with transactions 1
 schema:
   file: ./schema.graphql
 dataSources:
@@ -44,3 +44,8 @@ templates:
           handler: handleIntermediateStorage
         - event: Pending(string,string)
           handler: handlePending
+      callHandlers:
+        - function: storeResults(string, string)
+          handler: storeResults
+        - function: bulkPayOut( address[], uint256[], string, string, uint256)
+          handler: bulkPayOut
