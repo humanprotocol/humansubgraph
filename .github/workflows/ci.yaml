@@ -1,0 +1,17 @@
+name: Ci
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm install -g @graphprotocol/graph-cli
+      - run: graph codegen
+      - run: graph build
