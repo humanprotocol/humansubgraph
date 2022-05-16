@@ -2,19 +2,22 @@ import { BigInt } from "@graphprotocol/graph-ts"
 import {
   Escrow,
   IntermediateStorage,
-  Pending
+  Pending,
+  StoreResultsCall
 } from "../generated/templates/Escrow/Escrow"
-import { Escrow} from "../generated/schema"
+import { ethereum } from '@graphprotocol/graph-ts'
+import { ISEvent, PEvent} from "../generated/schema"
 
 export function handleIntermediateStorage(event: IntermediateStorage): void {
   // Entities can be loaded from the store using a string ID; this ID
   // needs to be unique across all entities of the same type
-  let entity = Escrow.load(event.transaction.from.toHex())
+  let id = event.transaction.from.toHex() + event.address.toHex()
+  let entity = ISEvent.load(id)
 
   // Entities only exist after they have been saved to the store;
   // `null` checks allow to create entities on demand
   if (!entity) {
-    entity = new Escrow(event.transaction.from.toHex())
+    entity = new ISEvent(id)
 
     // Entity fields can be set using simple assignments
     entity.count = BigInt.fromI32(0)
@@ -34,13 +37,13 @@ export function handleIntermediateStorage(event: IntermediateStorage): void {
 export function handlePending(event: Pending): void {
   // Entities can be loaded from the store using a string ID; this ID
   // needs to be unique across all entities of the same type
-  let entity = Escrow.load(event.transaction.from.toHex())
+  let id = event.transaction.from.toHex() + event.address.toHex()
+  let entity = PEvent.load(id)
 
   // Entities only exist after they have been saved to the store;
   // `null` checks allow to create entities on demand
   if (!entity) {
-    entity = new Escrow(event.transaction.from.toHex())
-
+    entity = new PEvent(id)
     // Entity fields can be set using simple assignments
     entity.count = BigInt.fromI32(0)
   }
@@ -54,5 +57,5 @@ export function handlePending(event: Pending): void {
 
   // Entities can be written to the store with `.save()`
   entity.save()
-
 }
+
