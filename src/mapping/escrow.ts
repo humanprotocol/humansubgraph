@@ -1,12 +1,13 @@
 import { BigInt } from "@graphprotocol/graph-ts"
 import {
+  BulkTransfer,
   Escrow,
   IntermediateStorage,
   Pending,
   StoreResultsCall
 } from "../generated/templates/Escrow/Escrow"
 import { ethereum } from '@graphprotocol/graph-ts'
-import { ISEvent, PEvent} from "../generated/schema"
+import { BulkTransferEvent, ISEvent, PEvent} from "../generated/schema"
 
 export function handleIntermediateStorage(event: IntermediateStorage): void {
   // Entities can be loaded from the store using a string ID; this ID
@@ -59,3 +60,26 @@ export function handlePending(event: Pending): void {
   entity.save()
 }
 
+
+export function handleBulkTransfer(event: BulkTransfer): void {
+  let entity = BulkTransferEvent.load(
+    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
+  );
+
+  if (!entity) {
+    entity = new BulkTransferEvent(
+      event.transaction.hash.toHex() + "-" + event.logIndex.toString()
+    );
+  }
+
+  entity.escrow = event.address;
+
+  entity.bulkCount = event.params._bulkCount;
+  entity.txId = event.params._txId;
+
+  entity.block = event.block.number;
+  entity.timestamp = event.block.timestamp;
+  entity.transaction = event.transaction.hash;
+
+  entity.save();
+}

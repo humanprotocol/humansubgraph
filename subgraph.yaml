@@ -45,3 +45,5 @@ templates:
           handler: handleIntermediateStorage
         - event: Pending(string,string)
           handler: handlePending
+        - event: BulkTransfer(indexed uint256,uint256)
+          handler: handleBulkTransfer
