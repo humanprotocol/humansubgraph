@@ -29,3 +29,26 @@ type BulkTransferEvent @entity {
   timestamp: BigInt!
   transaction: Bytes!
 }
+
+type HMTransferEvent @entity {
+  id: ID!
+  token: Bytes! # address 
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt!
+  
+  block: BigInt!
+  timestamp: BigInt!
+  transaction: Bytes!
+}
+
+type HMBulkTransferEvent @entity {
+  id: ID!
+  
+  bulkCount: BigInt!
+  txId: BigInt!
+  
+  block: BigInt!
+  timestamp: BigInt!
+  transaction: Bytes!
+}
