@@ -18,5 +18,5 @@ jobs:
       - run: npm run codegen
       - run: graph auth --product hosted-service ${API_KEY}
         env:
-          API_KEY: ${{ secrets.GRAPH_API_KEY }}
-      - run: graph deploy --product hosted-service  posix4e/humanrinkeby
+          API_KEY: ${{ secrets.HP_GRAPH_API_KEY }}
+      - run: graph deploy --product hosted-service humanprotocol/rinkeby
