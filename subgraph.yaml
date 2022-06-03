@@ -1,0 +1,23 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: EscrowFactory
+    network: matic
+    source:
+      address: "0xF09f451eC04cAb1b1FAe98C86F45291B00E52b03"
+      abi: EscrowFactory
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Launched
+      abis:
+        - name: EscrowFactory
+          file: ./abis/EscrowFactory.json
+      eventHandlers:
+        - event: Launched(address,address)
+          handler: handleLaunched
+      file: ./src/escrow-factory.ts
