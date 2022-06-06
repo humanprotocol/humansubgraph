@@ -2,15 +2,9 @@ import { BigInt } from "@graphprotocol/graph-ts"
 import {
   EscrowFactory,
   Launched
-<<<<<<< HEAD
 } from "../../generated/EscrowFactory/EscrowFactory"
 import { EscrowFactory } from "../../generated/schema"
 import { Escrow } from "../../generated/templates"
-=======
-} from "../generated/EscrowFactory/EscrowFactory"
-import { EscrowFactory } from "../generated/schema"
-import { Escrow } from "../generated/templates"
->>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50
 
 export function handleLaunched(event: Launched): void {
   // Entities can be loaded from the store using a string ID; this ID
@@ -37,8 +31,4 @@ export function handleLaunched(event: Launched): void {
   entity.save()
   Escrow.create(event.params.escrow)
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50

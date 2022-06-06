@@ -30,44 +30,22 @@
     "name": "counter",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-<<<<<<< HEAD
     "type": "function",
     "constant": true
-=======
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "trustedHandlers",
-        "type": "address[]"
-      }
-    ],
-    "name": "createEscrow",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "nonpayable",
-    "type": "function"
->>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50
   },
   {
     "inputs": [],
     "name": "eip20",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-<<<<<<< HEAD
     "type": "function",
     "constant": true
-=======
-    "type": "function"
->>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50
   },
   {
     "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "name": "escrowCounters",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-<<<<<<< HEAD
     "type": "function",
     "constant": true
   },
@@ -90,17 +68,6 @@
     "name": "createEscrow",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "nonpayable",
-=======
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "_address", "type": "address" }
-    ],
-    "name": "hasEscrow",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
->>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50
     "type": "function"
   },
   {
@@ -110,7 +77,6 @@
     "name": "isChild",
     "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "view",
-<<<<<<< HEAD
     "type": "function",
     "constant": true
   },
@@ -123,15 +89,5 @@
     "stateMutability": "view",
     "type": "function",
     "constant": true
-=======
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "lastEscrow",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
->>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50
   }
 ]

@@ -5,15 +5,9 @@ import {
   IntermediateStorage,
   Pending,
   StoreResultsCall
-<<<<<<< HEAD
 } from "../../generated/templates/Escrow/Escrow"
 import { ethereum } from '@graphprotocol/graph-ts'
 import { BulkTransferEvent, ISEvent, PEvent} from "../../generated/schema"
-=======
-} from "../generated/templates/Escrow/Escrow"
-import { ethereum } from '@graphprotocol/graph-ts'
-import { BulkTransferEvent, ISEvent, PEvent} from "../generated/schema"
->>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50
 
 export function handleIntermediateStorage(event: IntermediateStorage): void {
   // Entities can be loaded from the store using a string ID; this ID
@@ -88,8 +82,4 @@ export function handleBulkTransfer(event: BulkTransfer): void {
   entity.transaction = event.transaction.hash;
 
   entity.save();
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50
