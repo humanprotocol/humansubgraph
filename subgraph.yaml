@@ -1,17 +1,19 @@
-specVersion: 0.0.1
+specVersion: 0.0.5
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
     name: EscrowFactory
-    network: matic
+    network: moonbeam
     source:
-      address: "0xF09f451eC04cAb1b1FAe98C86F45291B00E52b03"
       abi: EscrowFactory
+      address: "0x98108c28B7767a52BE38B4860832dd4e11A7ecad"
+      startBlock: 1145429
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.7
       language: wasm/assemblyscript
+      file: ./src/mapping/escrowfactory.ts
       entities:
         - Launched
       abis:
@@ -20,4 +22,56 @@ dataSources:
       eventHandlers:
         - event: Launched(address,address)
           handler: handleLaunched
-      file: ./src/escrow-factory.ts
+  - kind: ethereum
+    name: HMToken
+    network: moonbeam
+    source:
+      abi: HMToken
+      address: "0x3b25BC1dC591D24d60560d0135D6750A561D4764"
+      startBlock: 1105853
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - BulkApproval
+        - BulkTransfer
+        - Transfer
+      abis:
+        - name: HMToken
+          file: ./abis/HMToken.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: BulkApproval(indexed uint256,uint256)
+          handler: handleBulkApproval
+        - event: BulkTransfer(indexed uint256,uint256)
+          handler: handleBulkTransfer
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping/hm-token.ts
+templates:
+  - name: Escrow
+    kind: ethereum/contract
+    network: moonbeam
+    source:
+      abi: Escrow
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/mapping/escrow.ts
+      entities:
+        - ISEvent
+        - PEvent
+      abis:
+        - name: Escrow
+          file: ./abis/Escrow.json
+      eventHandlers:
+        - event: IntermediateStorage(string,string)
+          handler: handleIntermediateStorage
+        - event: Pending(string,string)
+          handler: handlePending
+        - event: BulkTransfer(indexed uint256,uint256)
+          handler: handleBulkTransfer
