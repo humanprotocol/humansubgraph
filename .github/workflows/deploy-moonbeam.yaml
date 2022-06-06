@@ -13,9 +13,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm install
-      - run: npm install -g @graphprotocol/graph-cli
-      - run: npm run codegen
+      - run: yarn
+      - run: yarn add @graphprotocol/graph-cli
+      - run: yarn add gluegun
+      - run: yarn run codegen
       - run: graph auth --product hosted-service ${API_KEY}
         env:
           API_KEY: ${{ secrets.HP_GRAPH_API_KEY }}
