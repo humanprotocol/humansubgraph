@@ -5,8 +5,13 @@ import {
   Transfer,
   BulkApproval,
   BulkTransfer,
+<<<<<<< HEAD
 } from "../../generated/HMToken/HMToken";
 import { HMBulkTransferEvent, HMTransferEvent } from "../../generated/schema";
+=======
+} from "../generated/HMToken/HMToken";
+import { HMBulkTransferEvent, HMTransferEvent } from "../generated/schema";
+>>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50
 
 export function handleTransfer(event: Transfer): void {
   let entity = HMTransferEvent.load(
@@ -52,4 +57,8 @@ export function handleBulkTransfer(event: BulkTransfer): void {
 }
 
 export function handleBulkApproval(event: BulkApproval): void {}
+<<<<<<< HEAD
 export function handleApproval(event: Approval): void {}
+=======
+export function handleApproval(event: Approval): void {}
+>>>>>>> 4831e9f9c7921ad218c07da1466b492341dcaf50
