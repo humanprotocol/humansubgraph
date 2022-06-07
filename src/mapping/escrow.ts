@@ -5,9 +5,9 @@ import {
   IntermediateStorage,
   Pending,
   StoreResultsCall
-} from "../generated/templates/Escrow/Escrow"
+} from "../../generated/templates/Escrow/Escrow"
 import { ethereum } from '@graphprotocol/graph-ts'
-import { BulkTransferEvent, ISEvent, PEvent} from "../generated/schema"
+import { BulkTransferEvent, ISEvent, PEvent} from "../../generated/schema"
 
 export function handleIntermediateStorage(event: IntermediateStorage): void {
   // Entities can be loaded from the store using a string ID; this ID

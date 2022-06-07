@@ -5,8 +5,8 @@ import {
   Transfer,
   BulkApproval,
   BulkTransfer,
-} from "../generated/HMToken/HMToken";
-import { HMBulkTransferEvent, HMTransferEvent } from "../generated/schema";
+} from "../../generated/HMToken/HMToken";
+import { HMBulkTransferEvent, HMTransferEvent } from "../../generated/schema";
 
 export function handleTransfer(event: Transfer): void {
   let entity = HMTransferEvent.load(

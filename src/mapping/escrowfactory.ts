@@ -2,9 +2,9 @@ import { BigInt } from "@graphprotocol/graph-ts"
 import {
   EscrowFactory,
   Launched
-} from "../generated/EscrowFactory/EscrowFactory"
-import { EscrowFactory } from "../generated/schema"
-import { Escrow } from "../generated/templates"
+} from "../../generated/EscrowFactory/EscrowFactory"
+import { EscrowFactory } from "../../generated/schema"
+import { Escrow } from "../../generated/templates"
 
 export function handleLaunched(event: Launched): void {
   // Entities can be loaded from the store using a string ID; this ID
