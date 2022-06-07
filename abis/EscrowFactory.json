@@ -30,32 +30,7 @@
     "name": "counter",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "eip20",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "name": "escrowCounters",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "lastEscrow",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -71,14 +46,18 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_child", "type": "address" }
-    ],
-    "name": "isChild",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "inputs": [],
+    "name": "eip20",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "escrowCounters",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
     "inputs": [
@@ -87,7 +66,22 @@
     "name": "hasEscrow",
     "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_child", "type": "address" }
+    ],
+    "name": "isChild",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "lastEscrow",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
   }
 ]
