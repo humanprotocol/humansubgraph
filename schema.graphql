@@ -1,8 +1,7 @@
-type EscrowFactory @entity {
+type LaunchedEscrow @entity {
   id: ID!
-  count: BigInt!
   eip20: Bytes! # address
-  escrow: Bytes! # address
+  from: Bytes! # address
 }
 
 type ISEvent @entity {
